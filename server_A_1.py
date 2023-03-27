@@ -1,21 +1,21 @@
 import socket
 
-# Define the blood banks for blood group A at each location
-blood_banks = {
+# Define the layer 2 servers for blood group A
+locations = {
     'New York': '1',
     'Chicago': '2',
     'Los Angeles': '3'
 }
 
-# Create a server socket and listen for connections
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(('localhost', 9001))
-server_socket.listen(1)
+# Connect to the layer 1 server for blood group A
+layer1_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+layer1_socket.bind(('localhost', 9001))
+layer1_socket.listen(1)
 print('Server started and listening for connections...')
 
 while True:
     # Accept a client connection
-    client_socket, client_address = server_socket.accept()
+    client_socket, client_address = layer1_socket.accept()
     print('Accepted connection from {}:{}'.format(*client_address))
 
     # Receive the location from the layer 1 server
@@ -23,8 +23,8 @@ while True:
     print('Received location from layer 1 server:', location)
 
     # Get the blood bank number based on the location and send it to the layer 1 server
-    if location in blood_banks:
-        blood_bank = blood_banks[location]
+    if location in locations:
+        blood_bank = locations[location]
     else:
         blood_bank = 'N/A'
     client_socket.sendall(blood_bank.encode())

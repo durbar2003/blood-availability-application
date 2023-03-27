@@ -10,9 +10,9 @@ blood_group_servers = {
 
 # Create a mapping of locations to layer 2 servers
 location_servers = {
-    'New York': ['localhost', 9001, 9002, 9003],
-    'Chicago': ['localhost', 9011, 9012, 9013],
-    'Los Angeles': ['localhost', 9021, 9022, 9023]
+    'New York': ['localhost', 9001, 9011, 9021],
+    'Chicago': ['localhost', 9002, 9012, 9022],
+    'Los Angeles': ['localhost', 9021, 9022, 9023, 9024]
 }
 
 # Create a server socket and listen for connections

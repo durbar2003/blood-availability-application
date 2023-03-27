@@ -2,14 +2,14 @@ import socket
 
 # Define the layer 2 servers for blood group A
 locations = {
-    'New York': '10',
-    'Chicago': '11',
-    'Los Angeles': '12'
+    'New York': '13',
+    'Chicago': '14',
+    'Los Angeles': '15'
 }
 
 # Connect to the layer 1 server for blood group A
 layer1_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-layer1_socket.connect(('localhost', 9002))
+layer1_socket.connect(('localhost', 8002))
 
 # Receive the location from the layer 1 server
 location = layer1_socket.recv(1024).decode()
